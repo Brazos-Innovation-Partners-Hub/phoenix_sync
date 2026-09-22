@@ -1,3 +1,8 @@
+> **Brazos Innovation Partners fork.** Upstream stopped shipping in October 2025 and caps
+> Electric at 1.1.10. This fork is liveflow-io's unmerged PR #127 (Electric 1.6) raised to
+> Electric 1.8, and is what `eidetic_ui` depends on. It is a stopgap: EideticUI's own
+> sync layer replaces it. Branch `electric-1.8`; pinned by sha from `eidetic_ui`.
+
 # Phoenix.Sync
 
 Real-time sync for Postgres-backed [Phoenix](https://www.phoenixframework.org/) applications.
