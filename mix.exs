@@ -46,7 +46,10 @@ defmodule Phoenix.Sync.MixProject do
       {:jason, "~> 1.0"},
       {:ecto_sql, "~> 3.10", optional: true},
       {:electric, @electric_version, optional: true},
-      {:electric_client, ">= 0.10.1-beta-1"},
+      # Our copy of Electric's Elixir client, allowing Electric 1.8; upstream's stops at 1.6.
+      {:electric_client,
+       git: "https://github.com/Brazos-Innovation-Partners-Hub/electric_client.git",
+       ref: "929130c3442015f6f6ae92bd677028a0c0dcbf80"},
       {:igniter, "~> 0.6", optional: true}
     ] ++ deps_for_env(Mix.env()) ++ json_deps()
   end
