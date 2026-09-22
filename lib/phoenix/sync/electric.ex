@@ -217,6 +217,14 @@ defmodule Phoenix.Sync.Electric do
     |> set_persistent_config(:stack_id, fn ->
       "electric-stack#{System.monotonic_time()}"
     end)
+    # Electric 1.8 keeps shape status in a SQLite "shape-db" under `storage_dir`
+    # regardless of the shape-log backend. With the log in memory and the status on
+    # disk, a restart "restores" last run's shapes and the first request for one
+    # crashes on an ETS table that died with the old VM. A fresh directory per run,
+    # as for :dev, keeps both in step.
+    |> set_persistent_config(:storage_dir, fn ->
+      Path.join([System.tmp_dir!(), "phoenix-sync-test#{System.monotonic_time()}"])
+    end)
     |> set_persistent_config(:replication_stream_id, fn ->
       String.replace("phoenix_sync#{System.monotonic_time()}", "-", "_")
     end)
